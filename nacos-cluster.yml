@@ -28,12 +28,12 @@ spec:
           containerPort: 7848
         env:
         - name: HEAP_SIZE
-          value: 128m
+          value: 512m
         resources:
           requests:
-            cpu: "10m"
+            cpu: "100m"
           limits:
-            memory: "350Mi"
+            memory: "800Mi"
         volumeMounts:
         - mountPath: /web/conf/cluster.conf
           name: cluster-conf
