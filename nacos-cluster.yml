@@ -50,7 +50,7 @@ kind: Service
 metadata:
   labels:
     app: 'nacos-cluster'
-  name: registry-server
+  name: nacos-cluster-service
   namespace: 'default'
 spec:
   ports:
