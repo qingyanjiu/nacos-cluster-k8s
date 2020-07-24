@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: 'nacos-cluster'
+  name: 'nacos-cluster'
+  namespace: 'default'
+spec:
+  serviceName: nacos-headless-service
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: 'nacos-cluster'
+  template:
+    metadata:
+      labels:
+        app: 'nacos-cluster'
+      namespace: 'default'
+    spec:
+      containers:
+      - image: 'alaien/nacos-cluster'
+        imagePullPolicy: Always
+        name: 'nacos-cluster'
+        ports:
+        - name: web
+          containerPort: 8848
+        - name: elect
+          containerPort: 7848
+        env:
+        - name: HEAP_SIZE
+          value: 128m
+        resources:
+          requests:
+            cpu: "10m"
+          limits:
+            memory: "350Mi"
+        volumeMounts:
+        - mountPath: /web/conf/cluster.conf
+          name: cluster-conf
+          subPath: cluster.conf
+
+      volumes:
+      - name: cluster-conf
+        configMap: 
+          name: nacos-cluster
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: 'nacos-cluster'
+  name: registry-server
+  namespace: 'default'
+spec:
+  ports:
+  - name: web
+    port: 8848
+    protocol: TCP
+    targetPort: 8848
+    nodePort: 30001
+  selector:
+    app: 'nacos-cluster'
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: 'nacos-cluster'
+  name: nacos-headless-service
+  namespace: 'default'
+spec:
+  ports:
+  - name: web
+    port: 8848
+    protocol: TCP
+    targetPort: 8848
+  - name: elect
+    port: 7848
+    protocol: TCP
+    targetPort: 7848
+  selector:
+    app: 'nacos-cluster'
+  clusterIP: None
