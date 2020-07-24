@@ -5,5 +5,5 @@ metadata:
 data:
   cluster.conf: |
     # ip:port
-    nacos-cluster-0.nacos-headless-service:8848
-    nacos-cluster-1.nacos-headless-service:8848
+    nacos-cluster-0.nacos-headless-service.default.svc.cluster.local:8848
+    nacos-cluster-1.nacos-headless-service.default.svc.cluster.local:8848
