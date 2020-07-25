@@ -45,6 +45,10 @@ spec:
         - mountPath: /web/conf/application.properties
           name: cluster-conf
           subPath: application.properties
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", 'sed -i 's/${MY_POD_IP}/$1/g'  /web/conf/application.properties"]
 
       volumes:
       - name: cluster-conf
