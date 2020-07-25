@@ -1,3 +1,4 @@
 FROM alaien/nacos-cluster
+RUN chmod + w /web/conf/application.properties
 COPY ./conf/application.properties /web/conf/
 

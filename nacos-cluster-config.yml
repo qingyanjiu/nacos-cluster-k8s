@@ -36,7 +36,7 @@ data:
     nacos.inetutils.prefer-hostname-over-ip=true
 
     ### Specify local server's IP:
-    nacos.inetutils.ip-address=MY_POD_IP
+    #nacos.inetutils.ip-address=MY_POD_IP
 
 
     #*************** Config Module Related Configurations ***************#
@@ -158,9 +158,9 @@ data:
     ### MemberLookup
     ### Addressing pattern category, If set, the priority is highest
     # nacos.core.member.lookup.type=[file,address-server,discovery]
-    nacos.core.member.lookup.type=address-server
+    #nacos.core.member.lookup.type=address-server
     ## Set the cluster list with a configuration file or command-line argument
-    nacos.member.list=nacos-cluster-0.nacos-headless-service:8848?raft_port=7848,nacos-cluster-0.nacos-headless-service:8848?raft_port=7848
+    #nacos.member.list=nacos-cluster-0.nacos-headless-service:8848?raft_port=7848,nacos-cluster-0.nacos-headless-service:8848?raft_port=7848
     ## for DiscoveryMemberLookup
     # If you want to use cluster node self-discovery, turn this parameter on
     # nacos.member.discovery=false
