@@ -33,7 +33,7 @@ data:
 
     #*************** Network Related Configurations ***************#
     ### If prefer hostname over ip for Nacos server addresses in cluster.conf:
-    nacos.inetutils.prefer-hostname-over-ip=true
+    #nacos.inetutils.prefer-hostname-over-ip=true
 
     ### Specify local server's IP:
     #nacos.inetutils.ip-address=MY_POD_IP
