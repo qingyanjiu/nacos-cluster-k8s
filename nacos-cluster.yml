@@ -18,7 +18,7 @@ spec:
       namespace: 'default'
     spec:
       initContainers:
-      - image: 'busybox'
+      - image: 'alaien/nacos-cluster'
         imagePullPolicy: Always
         name: 'init-nacos-cluster'
         env:
@@ -27,9 +27,9 @@ spec:
             fieldRef:
               fieldPath: status.podIP
         volumeMounts:
-          - mountPath: /web/
+          - mountPath: /web/conf/
             name: cluster-conf
-        command: "sed -i \"s/MY_POD_IP/$MY_POD_IP/g\" /web/application.properties"
+        command: ["bash", "-c", "sed -i \"s/MY_POD_IP/$MY_POD_IP/g\" /web/conf/application.properties"]
       containers:
       - image: 'alaien/nacos-cluster'
         imagePullPolicy: Always
