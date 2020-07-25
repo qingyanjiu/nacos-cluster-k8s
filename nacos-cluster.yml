@@ -38,6 +38,9 @@ spec:
         - mountPath: /web/conf/cluster.conf
           name: cluster-conf
           subPath: cluster.conf
+        - mountPath: /web/conf/application.properties
+          name: cluster-conf
+          subPath: application.properties
 
       volumes:
       - name: cluster-conf
