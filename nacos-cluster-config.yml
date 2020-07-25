@@ -36,7 +36,7 @@ data:
     nacos.inetutils.prefer-hostname-over-ip=true
 
     ### Specify local server's IP:
-    #nacos.inetutils.ip-address=
+    nacos.inetutils.ip-address=${MY_POD_IP}
 
 
     #*************** Config Module Related Configurations ***************#
