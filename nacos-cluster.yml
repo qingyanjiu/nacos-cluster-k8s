@@ -21,6 +21,11 @@ spec:
       - image: 'alaien/nacos-cluster'
         imagePullPolicy: Always
         name: 'init-nacos-cluster'
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         volumeMounts:
           - mountPath: /web/conf/application.properties
             name: cluster-conf
@@ -38,10 +43,6 @@ spec:
         env:
         - name: HEAP_SIZE
           value: 512m
-        - name: MY_POD_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
         resources:
           requests:
             cpu: "100m"
