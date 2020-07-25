@@ -1,4 +1,4 @@
 FROM alaien/nacos-cluster
-RUN chmod 666 /web/conf/application.properties
 COPY ./conf/application.properties /web/conf/
+COPY ./bin/startup.sh /web/bin/
 

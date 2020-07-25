@@ -94,6 +94,7 @@ else
     JAVA_OPT="${JAVA_OPT} -server -Xms$HEAP_SIZE -Xmx$HEAP_SIZE -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m"
     JAVA_OPT="${JAVA_OPT} -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${BASE_DIR}/logs/java_heapdump.hprof"
     JAVA_OPT="${JAVA_OPT} -XX:-UseLargePages"
+    JAVA_OPT="${JAVA_OPT} -Dnacos.inetutils.ip-address=$MY_POD_IP"
 
 fi
 
